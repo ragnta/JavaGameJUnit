@@ -11,6 +11,12 @@ public class TestTamagochi {
 
 	private Tamagochi tamagochi;
 
+	/**
+	 * Create a new tamagochi instance for the test. 
+	 * We will have a fresh instance in every testcase because of this.
+	 * If we don't use the BeforeEach, we have to start the test with the following line:
+	 *   `tamagochi = new Tamagochi();`
+	 */
 	@BeforeEach
 	public void initTamagotchi() {
 		tamagochi = new Tamagochi();
@@ -32,6 +38,7 @@ public class TestTamagochi {
 
 		tamagochi.play();
 
+		assertTrue(tamagochi.isAlive());
 		assertEquals(expectedClean, tamagochi.getClean());
 		assertEquals(expectedHungry, tamagochi.getHungry());
 		assertEquals(expectedFun, tamagochi.getFun());
@@ -45,6 +52,7 @@ public class TestTamagochi {
 
 		tamagochi.feed();
 
+		assertTrue(tamagochi.isAlive());
 		assertEquals(expectedClean, tamagochi.getClean());
 		assertEquals(expectedHungry, tamagochi.getHungry());
 		assertEquals(expectedFun, tamagochi.getFun());
@@ -58,6 +66,7 @@ public class TestTamagochi {
 
 		tamagochi.wash();
 
+		assertTrue(tamagochi.isAlive());
 		assertEquals(expectedClean, tamagochi.getClean());
 		assertEquals(expectedHungry, tamagochi.getHungry());
 		assertEquals(expectedFun, tamagochi.getFun());
@@ -98,11 +107,53 @@ public class TestTamagochi {
 		assertEquals(expectedHungry, tamagochi.getHungry());
 	}
 
+	
 	@Test
 	public void testKillTamagotchiByFun() {
-		
+		int expcetedFun = 0;
+		int expcetedClean = 22;
+		int expectedHungry = 2;
 
-		// TODO 
+		tamagochi.feed();
+		tamagochi.feed();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+
+		
+		assertFalse(tamagochi.isAlive());
+		assertEquals(expcetedClean, tamagochi.getClean());
+		assertEquals(expcetedFun , tamagochi.getFun());
+		assertEquals(expectedHungry, tamagochi.getHungry());
 	}
+	
+	@Test
+	public void testKillTamagotchiByFunAndHunger() {
+		int expcetedFun = -2;
+		int expcetedClean = 28;
+		int expectedHungry = 0;
+
+		tamagochi.feed();
+		tamagochi.feed();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		tamagochi.wash();
+		
+		assertFalse(tamagochi.isAlive());
+		assertEquals(expcetedClean, tamagochi.getClean());
+		assertEquals(expcetedFun , tamagochi.getFun());
+		assertEquals(expectedHungry, tamagochi.getHungry());
+	}
+
 	
 }
