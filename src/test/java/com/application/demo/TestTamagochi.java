@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.application.demo.core.Tamagochi;
+
 public class TestTamagochi {
 
 	private Tamagochi tamagochi;
@@ -19,7 +21,7 @@ public class TestTamagochi {
 	 */
 	@BeforeEach
 	public void initTamagotchi() {
-		tamagochi = new Tamagochi();
+		tamagochi = new Tamagochi("Laci");
 	}
 
 	@Test

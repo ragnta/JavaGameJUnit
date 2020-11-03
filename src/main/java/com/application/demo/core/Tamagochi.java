@@ -1,4 +1,4 @@
-package com.application.demo;
+package com.application.demo.core;
 
 public class Tamagochi {
 
@@ -13,12 +13,14 @@ public class Tamagochi {
 	private int clean;
 	private int hungry;
 	private int counter = 0;
+	private String name;
 
-	public Tamagochi() {
+	public Tamagochi(String name) {
 		super();
 		this.fun = DEFAULT_VALUE;
 		this.clean = DEFAULT_VALUE;
 		this.hungry = DEFAULT_VALUE;
+		this.name = name;
 	}
 
 	public boolean isAlive() {
@@ -35,6 +37,10 @@ public class Tamagochi {
 		}
 	}
 
+	public String getName() {
+		return name;
+	}
+	
 	public void play() {
 
 		clean = clean - 2;
